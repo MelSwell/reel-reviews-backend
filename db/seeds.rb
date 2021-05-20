@@ -1,8 +1,9 @@
+Review.destroy_all
 User.destroy_all
 Movie.destroy_all
-Review.destroy_all
 
-User.create(username: "MelSwell", email: "Smcohen82@gmail.com", password: "abc123")
+seth = User.create(username: "MelSwell", email: "Smcohen82@gmail.com", password: "abc123")
+icarus = User.create(username: "Icarus", email: "Icarus@icarus.com", password: "abc123")
 
 def find_trailer_or_other_video(tmdb_id)
   
@@ -70,4 +71,25 @@ create_movie_from_tmdb_id(103328)
 create_movie_from_tmdb_id(64690)
 create_movie_from_tmdb_id(891)
 create_movie_from_tmdb_id(14275)
+create_movie_from_tmdb_id(536869)
 
+Review.create(
+  user_id: seth.id, 
+  movie_id: Movie.find_by(title: "The Godfather").id, 
+  rating: 10, 
+  written_review: "What can be said that hasn't been said already?"
+)
+
+Review.create(
+  user_id: seth.id, 
+  movie_id: Movie.find_by(title: "Days of Heaven").id, 
+  rating: 10, 
+  written_review: "One of the most visually stunning films I've ever seen. Terrence Malick is a poet with a camera."
+)
+
+Review.create(
+  user_id: icarus.id,
+  movie_id: Movie.find_by(title: "Cats").id,
+  rating: 10,
+  written_review: "Everyone hated this movie, but for some reason I loved it."
+)

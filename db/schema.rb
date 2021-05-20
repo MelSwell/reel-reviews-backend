@@ -10,14 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_19_214047) do
+ActiveRecord::Schema.define(version: 2021_05_20_163436) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "movies", force: :cascade do |t|
     t.string "title"
-    t.integer "average_tmdb_rating"
+    t.decimal "average_tmdb_rating"
     t.string "poster_img"
     t.string "director"
     t.integer "tmdb_id"
