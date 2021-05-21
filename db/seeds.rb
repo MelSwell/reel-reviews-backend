@@ -27,7 +27,7 @@ end
 def create_movie_from_tmdb_id(tmdb_id)
   
   tmdb_config = Tmdb::Configuration.get
-  youtube_base_url = 'https://www.youtube.com/watch?v='
+  youtube_base_url = 'https://www.youtube.com/embed/'
   
   movie = Tmdb::Movie.detail(tmdb_id)
   movie_cast = Tmdb::Movie.cast(tmdb_id)[0..5].map{ |a| a.name }.join(", ")
