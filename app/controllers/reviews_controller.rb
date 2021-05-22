@@ -1,5 +1,5 @@
 class ReviewsController < ApplicationController
-  before_action :find_review, only: [:show, :update]
+  before_action :find_review, only: [:show, :update, :destroy]
 
   def index
     @reviews = Review.where(user_id: params[:user_id])
@@ -24,6 +24,10 @@ class ReviewsController < ApplicationController
     else
       render json: @review.errors.full_messages
     end
+  end
+
+  def destroy
+    @review.destroy
   end
 
   private
