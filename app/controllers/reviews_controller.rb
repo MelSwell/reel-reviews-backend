@@ -18,6 +18,15 @@ class ReviewsController < ApplicationController
     end
   end
 
+  def create
+    @review = Review.create(review_params)
+    if @review.valid?
+      render json: @review
+    else
+      render json: @review.errors.full_messages
+    end
+  end
+
   def update
     if @review.update(review_params)
       render json: @review

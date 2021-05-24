@@ -39,6 +39,15 @@ class Search
     end
   end
 
+  def find_director(tmdb_id)
+    crew = Tmdb::Movie.crew(tmdb_id)
+    if crew.length == 0 || crew.select{ |c| c.job.downcase == "director" }.length == 0
+      "none"
+    else
+      crew.select{ |c| c.job.downcase === "director" }[0].name
+    end
+  end
+
   def create_movie_from_tmdb_id(tmdb_id)
   
     tmdb_config = Tmdb::Configuration.get
@@ -50,11 +59,7 @@ class Search
     movie_genres = movie.genres.map { |g| g.name }.join(", ")
     youtube_key = find_trailer_or_other_video(tmdb_id)
     movie_trailer_url = youtube_key ? youtube_base_url+youtube_key : "none"
-    
-    crew = Tmdb::Movie.crew(tmdb_id) 
-    movie_director = crew.length > 0 ? (
-      crew.select{ |c| c.job.downcase === "director" }[0].name
-    ) : "none"
+    movie_director = find_director(tmdb_id)
   
     Movie.create(
       title: movie.title, 
