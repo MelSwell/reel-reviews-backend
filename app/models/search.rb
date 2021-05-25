@@ -1,6 +1,6 @@
 class Search
-  def initialize(string)
-    @search_results = Tmdb::Search.movie(string).results[0..9]
+  def initialize(search_term)
+    @search_results = Tmdb::Search.movie(search_term).results[0..9]
   end
 
   def populate_db_with_results
@@ -23,13 +23,13 @@ class Search
     if videos.length == 0
       nil
     else
-      if videos.select { |v| v.type.downcase === 'trailer' }.length > 0
+      if videos.select { |v| v.type.downcase == 'trailer' }.length > 0
         
-        videos.select { |v| v.type.downcase === 'trailer' }[0].key
+        videos.select { |v| v.type.downcase == 'trailer' }[0].key
         
-      elsif videos.select { |v| v.type.downcase === 'clip' }.length > 0
+      elsif videos.select { |v| v.type.downcase == 'clip' }.length > 0
         
-        videos.select { |v| v.type.downcase === 'clip' }[0].key
+        videos.select { |v| v.type.downcase == 'clip' }[0].key
         
       else
         
@@ -44,7 +44,7 @@ class Search
     if crew.length == 0 || crew.select{ |c| c.job.downcase == "director" }.length == 0
       "none"
     else
-      crew.select{ |c| c.job.downcase === "director" }[0].name
+      crew.select{ |c| c.job.downcase == "director" }[0].name
     end
   end
 
@@ -60,7 +60,7 @@ class Search
     youtube_key = find_trailer_or_other_video(tmdb_id)
     movie_trailer_url = youtube_key ? youtube_base_url+youtube_key : "none"
     movie_director = find_director(tmdb_id)
-  
+    
     Movie.create(
       title: movie.title, 
       average_tmdb_rating: movie.vote_average,
