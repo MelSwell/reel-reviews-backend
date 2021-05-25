@@ -1,10 +1,35 @@
-class Search
-  def initialize(search_term)
-    @search_results = Tmdb::Search.movie(search_term).results[0..9]
+class TmdbApiController < ApplicationController
+  def search
+    tmdb_results = Tmdb::Search.movie(params[:search_term]).results[0..9]
+    populate_db_with_results(tmdb_results)
+    
+    @results = Movie.all.select do |movie| 
+      movie.title.downcase.include?(params[:search_term].downcase)
+    end
+
+    if @results.length > 0
+      render json: @results
+    else
+      render json: ["Sorry, we could not find a match. Please try again."]
+    end
   end
 
-  def populate_db_with_results
-    @search_results.each do |result|
+  def recommendations
+    tmdb_results = Tmdb::Movie.recommendations(params[:tmdb_id]).results[0..14]
+    tmdb_result_ids = Tmdb::Movie.recommendations(params[:tmdb_id]).results[0..14].map { |r| r.id}
+    populate_db_with_results(tmdb_results)
+    
+    @results = Movie.all.select do |movie|
+      tmdb_result_ids.include?(movie.tmdb_id)
+    end
+
+    render json: @results
+  end
+
+  private
+
+  def populate_db_with_results(tmdb_results)
+    tmdb_results.each do |result|
       next if (
         result.backdrop_path == nil ||
         result.poster_path == nil ||
@@ -13,8 +38,6 @@ class Search
       create_movie_from_tmdb_id(result.id) 
     end
   end
-
-  private
 
   def find_trailer_or_other_video(tmdb_id)
   
@@ -77,5 +100,4 @@ class Search
     )
   
   end
-
 end

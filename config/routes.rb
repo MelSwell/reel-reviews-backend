@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
-  get '/search', to: 'search#submit'
+  get '/search', to: 'tmdb_api#search'
+  get '/recommendations', to: 'tmdb_api#recommendations'
   
   resources :movies
   resources :users do 
     resources :reviews
   end
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
