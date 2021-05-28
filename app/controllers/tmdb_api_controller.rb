@@ -23,7 +23,11 @@ class TmdbApiController < ApplicationController
       tmdb_result_ids.include?(movie.tmdb_id)
     end
 
-    render json: @results
+    if @results.length > 0
+      render json: @results
+    else
+      render json: ["Sorry, we could not find any recommendations based on this movie."]
+    end
   end
 
   private
