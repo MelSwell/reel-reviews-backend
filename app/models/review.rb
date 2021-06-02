@@ -7,4 +7,8 @@ class Review < ApplicationRecord
   validates :rating, numericality: { greater_than_or_equal_to: 1, less_than_or_equal_to: 10}
   validates :user_id, uniqueness: { scope: :movie_id,
     message: "has already reviewed this movie! Please update the already existing review!" }
+
+  def username
+    self.user.username
+  end
 end
