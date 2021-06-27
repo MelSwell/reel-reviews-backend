@@ -5,10 +5,10 @@ This is a movie review app with a search and recommendations feature. You have f
 ## Installation
 
 1) Clone this repository to your machine
-2) In the project directory, run 'bundle install'
-3) Run 'rails db:create' to create the Postgres database
-4) Run 'rails db:migrate' to set up schema
-5) You do not need to seed the database to use the app, but there is a seeds file with some starter data. If you would like to use the seeds run 'rails db:seed'
+2) In the project directory, run `bundle install`
+3) Run `rails db:create` to create the Postgres database
+4) Run `rails db:migrate` to set up schema
+5) You do not need to seed the database to use the app, but there is a seeds file with some starter data. If you would like to use the seeds run `rails db:seed`
 6) Ensure that your local PostgreSQL server is running
 7) Clone the [frontend repo] (https://github.com/MelSwell/reel-reviews-frontend) to your machine and follow those installation instructions
 
