@@ -18,9 +18,9 @@ Create a user account ro login with an existing account from the seeds
 
 New users will not have any reviewed movies associated with them; use the search feature to find movies to review
 
-To write a new review, simply click the 'View' button on the chosen search result card to pull up a modal
+To write a new review, simply click the 'View' button on the chosen search result card to pull up a modal with more options
 
-To manage/view your reviews, go to the 'My Reviews'
+To manage/view your reviews, go to the 'My Reviews' page. From here, click the 'View' button on any of your reviews to pull up a modal with more options
 
 All movies come with a details page and a 'Get Recommendations' button
 
