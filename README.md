@@ -1,4 +1,4 @@
-# README
+# ReelReviews
 
 This is a movie review app with a search and recommendations feature. You have full CRUD over your reviews. You can also use the search feature to search for new movies to review by title. Each movie comes with a recommendations button, as well as a show page where you can find more details about the film. This was my capstone project for Flatiron School. The app is best run on a desktop cmoputer with a screen at least 800 pixels wide.
 
