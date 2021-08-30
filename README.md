@@ -2,7 +2,11 @@
 
 This is a movie review app with a search and recommendations feature. You have full CRUD over your reviews. You can also use the search feature to search for new movies to review by title. Each movie comes with a recommendations button, as well as a show page where you can find more details about the film. This was my capstone project for Flatiron School. The app is best run on a desktop computer with a screen at least 800 pixels wide.
 
+You can visit the app in production at [ReelReviews](https://reelreviews-cohen.netlify.app/). Initial load may be delayed if Heroku has put the app to sleep.
+
 ## Installation
+
+To run this app locally, you will need to set up an untracked config file to house environment variables. If you would like to run the app locally for the purposes of experimentation or further development, please feel free to submit a pull request or [email me](smcohen82@gmail.com), and I will give you the necessary information and setup instructions. Otherwise, visit the link above to use the app in production. 
 
 1) Clone this repository to your machine
 2) In the project directory, run `bundle install`
@@ -10,11 +14,11 @@ This is a movie review app with a search and recommendations feature. You have f
 4) Run `rails db:migrate` to set up schema
 5) You do not need to seed the database to use the app, but there is a seeds file with some starter data. If you would like to use the seeds run `rails db:seed`
 6) Ensure that your local PostgreSQL server is running
-7) Clone the [frontend repo] (https://github.com/MelSwell/reel-reviews-frontend) to your machine and follow those installation instructions
+7) Clone the [frontend repo](https://github.com/MelSwell/reel-reviews-frontend) to your machine and follow those installation instructions
 
 ## Usage
 
-Create a user account or login with an existing account from the seeds
+Create a user account or login with an existing one
 
 New users will not have any reviewed movies associated with them; use the search feature to find movies to review
 
